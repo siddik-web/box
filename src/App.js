@@ -1,25 +1,23 @@
 
+import { useDispatch } from 'react-redux';
+import { add, remove } from './actions';
 import './App.css';
-import videoLink from './lake.mp4';
+import Box from './Box.js';
 function App() {
+  const dispatch = useDispatch();
+  function handleAdd() {
+    dispatch(add(10))
+  }
+  function handleRemove() {
+    dispatch(remove())
+  }
   return (
     <div className="App">
-  
-      <video controls={false} style={BGstyle} preload="true" autoPlay muted loop width="100%" height="auto">
-          <source src={videoLink} type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
+      <button onClick={handleAdd}>click to Add</button>
+      <button onClick={handleRemove}>click to Remove</button>
+      <Box/>
     </div>
   );
 }
 
-var BGstyle = {
-  position: "absolute",
-  zIndex:999,
-  right:0,
-  bottom:0,
-  minWidth:'100%',
-  width: 'auto',
-  backgroundSize:"cover"
-}
 export default App;
